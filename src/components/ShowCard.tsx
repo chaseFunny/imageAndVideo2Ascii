@@ -6,7 +6,6 @@ import {
 	CardTitle
 } from '@/components/ui/card';
 import { ShowItem } from '@/types/show';
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface ShowCardProps {
@@ -21,9 +20,7 @@ export function ShowCard({ show }: ShowCardProps) {
 					{show.type === 'video' ? (
 						<video src={show.path} className="w-full h-[200px] object-cover" />
 					) : (
-						<Image
-							width={300}
-							height={200}
+						<img
 							src={show.path}
 							alt={show.title}
 							className="w-full h-[200px] object-cover"

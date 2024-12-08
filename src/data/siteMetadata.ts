@@ -22,6 +22,7 @@ const siteMetadata = {
 		blog: 'https://luckysnail.cn',
 		github: 'https://github.com/chaseFunny',
 		twitter: 'https://x.com/haozhan05554957'
-	}
+	},
+	codeUrl: 'https://github.com/chaseFunny/imageAndVideo2Ascii'
 };
 export default siteMetadata;

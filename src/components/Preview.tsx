@@ -7,6 +7,7 @@ import {
 	CardTitle
 } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
+import { isMobile } from '@/lib/utils';
 import { FlipHorizontal, Pause, Play, RefreshCw } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import * as ResizablePrimitive from 'react-resizable-panels';
@@ -17,6 +18,8 @@ interface PreviewProps {
 }
 
 export function Preview({ file, previewUrl }: PreviewProps) {
+	console.log(previewUrl);
+
 	const isVideo = file?.type?.startsWith('video/');
 	// 视频元素
 	const videoRef = useRef<HTMLVideoElement>(null);
@@ -94,7 +97,8 @@ export function Preview({ file, previewUrl }: PreviewProps) {
 
 			const { width, height } = await calculateContainerSize();
 
-			img.src = previewUrl;
+			img.crossOrigin = 'Anonymous';
+
 			img.onload = () => {
 				// 设置canvas尺寸为计算后的尺寸
 				canvas.width = width;
@@ -123,6 +127,7 @@ export function Preview({ file, previewUrl }: PreviewProps) {
 				}
 				setAsciiText(html);
 			};
+			img.src = previewUrl;
 			return; // 提前返回，避免执行后续视频相关的代码
 		}
 
@@ -244,11 +249,12 @@ export function Preview({ file, previewUrl }: PreviewProps) {
 					<ResizablePrimitive.Panel
 						defaultSize={50}
 						minSize={30}
-						className={`p-3 ${showVideo ? '' : 'absolute left-[-1000px] top-[-1000px]'}`}
+						className={`p-3 ${showVideo && !isMobile() ? '' : 'absolute left-[-10000px] top-[-10000px] w-1/2 h-auto'}`}
 					>
 						<div className="h-full overflow-hidden rounded-md">
 							{isVideo ? (
 								<video
+									crossOrigin="anonymous"
 									ref={videoRef}
 									src={previewUrl}
 									onClick={togglePlay}

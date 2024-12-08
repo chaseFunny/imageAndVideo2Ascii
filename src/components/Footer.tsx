@@ -17,6 +17,13 @@ export function Footer() {
 
 				<div className="flex items-center gap-4 text-sm text-muted-foreground">
 					<Link
+						href={siteMetadata.codeUrl}
+						target="_blank"
+						className="hover:text-foreground/80 text-foreground/60"
+					>
+						源码
+					</Link>
+					<Link
 						href={siteMetadata.social.blog}
 						target="_blank"
 						className="hover:text-foreground/80 text-foreground/60"

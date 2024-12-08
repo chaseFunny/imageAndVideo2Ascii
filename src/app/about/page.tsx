@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
 	return (
-		<div className="container py-10">
+		<div className="container p-2 sm:p-10">
 			<div className="mx-auto max-w-3xl space-y-8">
 				{/* 标题部分 */}
 				<div className="space-y-2">

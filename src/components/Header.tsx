@@ -7,7 +7,9 @@ export function Header() {
 			<div className="container flex h-14 items-center justify-between">
 				<div className="flex gap-6 md:gap-10">
 					<Link className="flex items-center space-x-2" href="/">
-						<span className="inline-block font-bold">ASCII 字符生成器</span>
+						<span className="inline-block font-bold sm:max-w-16 max-w-12 overflow-hidden whitespace-nowrap">
+							ASCII 字符生成器
+						</span>
 					</Link>
 				</div>
 

@@ -15,7 +15,7 @@ export default function ShowDetailPage() {
 		if (currentShow) {
 			setShow(currentShow);
 			// 从路径创建 File 对象
-			fetch(currentShow.path)
+			fetch(currentShow.path, { mode: 'no-cors' })
 				.then((res) => res.blob())
 				.then((blob) => {
 					const file = new File([blob], currentShow.title, {
@@ -27,7 +27,7 @@ export default function ShowDetailPage() {
 	}, [params.id]);
 
 	if (!show || !file) {
-		return <div>Loading...</div>;
+		return <div>可能比较慢，建议从本地上传视频观看...</div>;
 	}
 
 	return (
